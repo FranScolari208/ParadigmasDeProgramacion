@@ -1,0 +1,63 @@
+import destinos.*
+import barrileteCosmico.*
+
+describe "Destinos importantes" {
+
+	test "Los destinos mas importantes de barrilete cosmico son Garlic´s Sea, Last Toninas" {
+		assert.equals([ lastToninas, garlicsSea ], barrileteCosmico.obtenerDestinosMasImportantes())
+	}
+
+}
+
+describe "aplicar un descuento del 15% a todos los detinos de Barrilete Cosmico" {
+
+	method initialize() {
+		barrileteCosmico.aplicarDescuentoALosDestinos(15)
+	}
+
+	test "se aplica el descuento correctamente" {
+		assert.equals(2125, garlicsSea.precio())
+		assert.equals(1147.5, silversSea.precio())
+		assert.equals(2975, lastToninas.precio())
+		assert.equals(1275, goodAirs.precio())
+	}
+
+	test "se agrega el certificado de descuento a todos los destinos" {
+		assert.that(lastToninas.equipajeImprescindible().contains("Certificado de descuento"))
+		assert.that(silversSea.equipajeImprescindible().contains("Certificado de descuento"))
+		assert.that(goodAirs.equipajeImprescindible().contains("Certificado de descuento"))
+		assert.that(garlicsSea.equipajeImprescindible().contains("Certificado de descuento"))
+	}
+
+}
+
+describe "Destinos peligrosos" {
+
+	test "Los destinos mas peligrosos hasta el momento son Last Toninas" {
+		assert.that(lastToninas.esPeligroso())
+		assert.notThat(goodAirs.esPeligroso())
+		assert.notThat(garlicsSea.esPeligroso())
+		assert.notThat(silversSea.esPeligroso())
+	}
+
+}
+
+describe "Barrilete cosmico es una empresa extrema" {
+
+	test "Los destinos mas peligrosos hasta el momento son Last Toninas" {
+		assert.that(barrileteCosmico.esEmpresaExtrema())
+	}
+
+}
+
+describe "Carta de destinos de Barrilete cosmico" {
+
+	test "La carta de destinos es: Last Toninas, Garlic's sea, Good Airs y Silver's Sea" {
+		assert.that(barrileteCosmico.cartaDeDestinos().contains("Last Toninas"))
+		assert.that(barrileteCosmico.cartaDeDestinos().contains("Garlic's Sea"))
+		assert.that(barrileteCosmico.cartaDeDestinos().contains("Good Airs"))
+		assert.that(barrileteCosmico.cartaDeDestinos().contains("Silver's Sea"))
+	}
+
+}
+

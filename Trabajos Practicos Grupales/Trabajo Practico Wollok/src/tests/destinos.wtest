@@ -1,0 +1,26 @@
+import destinos.*
+
+describe "Tests de last Toninas" {
+
+	method initialize() {
+		lastToninas.aplicarDescuento(25)
+	}
+
+	test "El precio es 2625 despues de aplicarle un 25% de descuento a Last Toninas" {
+		assert.equals(2625, lastToninas.precio())
+	}
+
+	test "Se agrego el certificado de descuento despues de aplicarle un 25% de descuento a Last Toninas" {
+		var equipajeImprescindible = lastToninas.equipajeImprescindible()
+		assert.that(equipajeImprescindible.contains("Certificado de descuento"))
+	}
+
+}
+
+describe "Tests de Silver's Sea" {
+
+	test "Silver's Sea no es un destino peligroso" {
+		assert.notThat(silversSea.esPeligroso())
+	}
+
+}

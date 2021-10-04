@@ -1,0 +1,82 @@
+@startuml "Barrilete Cosmico"
+
+object barrileteCosmico{
+    destinos = [lastToninas, garlicsSea, goodAirs, silversSea]
+    usuarios = {pabloHari}
+
+    obtenerDestinoMasImportantes()
+    aplicarDescuentosALosDestinos()
+    esEmpresaExtrema()
+    cartaDeDestinos()
+}
+
+class Destino {
+    nombre
+    equipajeImprecindible
+    precio
+
+    esDestacado()
+    aplicarDescuento(unDescuento)
+    reducirPrecio(unDescuento)
+    agregarEquipaje(equipaje)
+    esDestinoPeligroso()
+}
+
+class Usuario{
+    nombreUsuario
+    destinosVesitados
+    dinero
+    usuariosQueSigue
+
+    viajarADestino(destino)
+    puedeViajar(destino)
+    comprarPasaje(destino)
+    agregarDestino(destino)
+    obtenerKilometros()
+    seguirUsuario(unUsuario)
+    devolverFollow(unUsuario)
+    puedeViajar(destino)
+
+}
+
+object lastToninas{
+    nombre = "Last Toninas"
+    equipajeImprecindible =  ["vacuna gripal", "vacuna B", "necronomicon"]
+    precio = 3500
+}
+
+object silverSea{
+    nombre = "Silver's Sea"
+	equipajeImprecindible = ["protector solar", "equipo de buceo"]
+	precio = 1350
+}
+
+object goodAirs{
+    nombre = "Good Airs"
+	equipajeImprecindible = ["cerveza", "protector solar"]
+	precio = 1500
+}
+
+object garlicSea {
+    nombre = "Garlic's Sea"
+	equipajeImprecindible = ["caña de pescar", "piloto"] 
+	precio = 2500
+}
+
+object pHari{
+    nombreUsuario = "Pablo Hari"
+	destinosVisitados = [lastToninas, goodAirs]
+	dinero = 1500
+	seguidos = []
+}
+
+lastToninas --|> Destino
+goodAirs    --|> Destino
+silverSea   --|> Destino
+garlicSea   --|> Destino
+pHari   --|> Usuario
+
+barrileteCosmico -->"*" Destino
+barrileteCosmico       -->"*" Usuario
+
+@enduml
