@@ -3,7 +3,6 @@ import destinos.*
 object barrileteCosmico {
 
 	var destinos = [lastToninas, garlicsSea, goodAirs, silversSea]
-	var property usuarios = { pHari }
 
 	method destinos() = destinos
 
