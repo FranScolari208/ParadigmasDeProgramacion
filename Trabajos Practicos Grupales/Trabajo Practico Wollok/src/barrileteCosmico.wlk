@@ -3,6 +3,7 @@ import destinos.*
 object barrileteCosmico {
 
 	var destinos = [lastToninas, garlicsSea, goodAirs, silversSea]
+	var mediosDeTransporte = []
 
 	method destinos() = destinos
 
@@ -21,5 +22,7 @@ object barrileteCosmico {
 	method cartaDeDestinos() {
 		return destinos.map({ unDestino => unDestino.nombre() })
 	}
+	
+	method armarViaje()
 
 }
