@@ -1,21 +1,38 @@
 import usuarios.*
 import destinos.*
+import viajes.*
 
-describe "Tests de PHari" {
+describe "Tests de PHari" {	
 
-	test "PHari tiene 500 kilometros" {
-		assert.equals(500, pHari.kilometros())
+	test "Ve que PHari pueda hacer un viaje a Garlic's Sea" {
+		assert.that(pHari.puedeViajar(viajeAGarlicSea))
 	}
-
-	test "Hacer que PHari vuele a Silver 's Sea" {
-		assert.that(pHari.puedeViajar(silversSea))
-		pHari.volarAUnDestino(silversSea)
-		assert.that(pHari.destinosQueVisito().contains(silversSea))
+	
+	test "Ver que Pablo se siga a si mismo"{
+		pHari.seguirUsuario(pHari)
+		assert.that(pHari.usuariosQueSigue().contains(pHari))
 	}
-
-	test "Ver si PHari tiene $150 en su cuenta" {
-		pHari.volarAUnDestino(silversSea)
-		assert.equals(150, pHari.dinero())
-	}
-
 }
+
+describe "Test de PHari y su viaje a Garlic Sea"{
+	method initialize() {
+		pHari.viajar(viajeAGarlicSea)
+	}
+	
+	test "PHari tiene 100 kilometros" {
+		assert.equals(100, pHari.kilometros())
+	}
+
+	test "Pablo se queda sin plata luego de viajar a Garlic's Sea" {
+		assert.equals(0, pHari.dinero())
+	}
+	
+	test "Ver que el viaje a garlicSea este en la lista de viajes de pablo"{
+		assert.that(pHari.viajes().contains(viajeAGarlicSea))
+	}
+	
+	test "Ver que luego de viajar a Garlic Sea Pablo la tenga como localidad de origen"{
+		assert.equals(garlicsSea, pHari.localidadDeOrigen())
+	}
+}
+

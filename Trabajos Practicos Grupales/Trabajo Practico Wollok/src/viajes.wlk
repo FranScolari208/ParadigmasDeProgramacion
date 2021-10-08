@@ -1,3 +1,5 @@
+import mediosDeTransporte.*
+import destinos.*
 class Viaje{
 	var origen
 	var destino
@@ -21,3 +23,5 @@ class Viaje{
 	}
 	
 }
+
+const viajeAGarlicSea = new Viaje(origen = goodAirs, destino = garlicsSea, medioDeTransporte = avion)

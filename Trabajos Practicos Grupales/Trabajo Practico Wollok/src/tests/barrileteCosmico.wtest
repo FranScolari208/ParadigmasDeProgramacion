@@ -1,5 +1,6 @@
 import destinos.*
 import barrileteCosmico.*
+import usuarios.*
 
 describe "Destinos importantes" {
 	test "Los destinos mas importantes de barrilete cosmico son Garlic´s Sea, Last Toninas" {
@@ -38,11 +39,12 @@ describe "aplicar un descuento del 15% a todos los detinos de Barrilete Cosmico"
 }
 
 describe "Destinos peligrosos" {
-	test "Los destinos mas peligrosos hasta el momento son Last Toninas" {
+	test "Last Toninas es destino peligroso" {
 		assert.that(lastToninas.esPeligroso())
+	}
+	
+	test "Good Airs no es destino peligroso" {
 		assert.notThat(goodAirs.esPeligroso())
-		assert.notThat(garlicsSea.esPeligroso())
-		assert.notThat(silversSea.esPeligroso())
 	}
 }
 
@@ -53,11 +55,12 @@ describe "Barrilete cosmico es una empresa extrema" {
 }
 
 describe "Carta de destinos de Barrilete cosmico" {
-	test "La carta de destinos es: Last Toninas, Garlic's sea, Good Airs y Silver's Sea" {
+	test "Last Toninas esta en la carta de destinos" {
 		assert.that(barrileteCosmico.cartaDeDestinos().contains("Last Toninas"))
-		assert.that(barrileteCosmico.cartaDeDestinos().contains("Garlic's Sea"))
+	}
+	
+	test "GoodAirs esta en la carta de destinos" {
 		assert.that(barrileteCosmico.cartaDeDestinos().contains("Good Airs"))
-		assert.that(barrileteCosmico.cartaDeDestinos().contains("Silver's Sea"))
 	}
 }
 

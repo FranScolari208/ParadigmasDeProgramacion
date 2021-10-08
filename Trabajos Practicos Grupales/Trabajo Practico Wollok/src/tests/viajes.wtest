@@ -1,0 +1,13 @@
+import localidades.*
+import destinos.*
+import viajes.*
+
+describe "Tests de viaje a Garlic Sea"{
+	test "Distancia recorrida del viaje"{
+		assert.equals(100, viajeAGarlicSea.distanciaRecorrida())
+	}
+	
+	test "Ver precio del viaje a Garlic Sea"{
+		assert.equals(12500, viajeAGarlicSea.precioDeViaje())
+	}
+}

@@ -1,24 +1,21 @@
 import destinos.*
+import barrileteCosmico.*
 
 class Usuario {
 
 	const nombre
 	var viajes
 	var dinero
-	var usuariosQueSigue
+	var usuariosQueSigue = #{}
 	var localidadDeOrigen
 
 	method dinero() = dinero
-
-	method volarAUnDestino(destino) {
-		if (self.puedeViajar(destino)) {
-			self.comprarPasaje(destino)
-			self.viajarADestino(destino)
-			return "buen viaje"
-		} else {
-			return "anda a laburar"
-		}
-	}
+	
+	method viajes() = viajes
+	
+	method localidadDeOrigen() = localidadDeOrigen
+	
+	method usuariosQueSigue() = usuariosQueSigue
 
 	method kilometros(){
 		const kilometrosViajes = viajes.map({ unViaje => unViaje.distanciaRecorrida() })
@@ -34,42 +31,26 @@ class Usuario {
 		usuariosQueSigue.add(unUsuario)
 	}
 
-	method comprarPasaje(destino) {
-		dinero -= destino.precio()
+	method comprarPasaje(unPrecio) {
+		dinero -= unPrecio
 	}
 
-	method viajarADestino(destino) {
-		destinosQueVisito.add(destino)
+	method hacerViaje(unViaje){
+		viajes.add(unViaje)
+		localidadDeOrigen = unViaje.destino()
 	}
 
-	method puedeViajar(destino) {
-		return destino.precio() <= dinero
+	method puedeViajar(unViaje) {
+		return unViaje.precioDeViaje() <= dinero
 	}
 	
 	method viajar(unViaje){
-		if (self.puedeViajar(unViaje.destino())) {
-			self.comprarPasaje(unViaje.destino())
-			self.viajarADestino(unViaje.destino())
-			return "buen viaje"
-		} else {
-			return "anda a laburar"
+		if (self.puedeViajar(unViaje)) {
+			self.comprarPasaje(unViaje.precioDeViaje())
+			self.hacerViaje(unViaje)
 		}
 	}
-
 }
 
-const pHari = new Usuario(nombre = "Pablo Hari", destinosQueVisito = [ lastToninas, goodAirs ], dinero = 1500, usuariosQueSigue = [])
+const pHari = new Usuario(nombre = "Pablo Hari", viajes = [], dinero = 12500, usuariosQueSigue = #{}, localidadDeOrigen = goodAirs)
 
-
-
-
-// correcciones para hacer por prueba 2
-// ver el tema de que kilometro ponerle a los destinos descriptos
-// ver que localidad ponerle a phari
-// ver q viajes poner a phari
-// ver como hacer el tema de los viajes
-// ver que metodos modificar y borrar
-// ver los tests
-// ver si hay que declarar transportes
-// ver si hay que instanciar viajes
-// ver metodo viajar
