@@ -44,7 +44,10 @@ class Usuario {
 		return unViaje.precioDeViaje() <= dinero
 	}
 	
-	method viajar(unViaje){
+	method viajarA(unDestino){
+		
+		var unViaje = barrileteCosmico.armarViaje(self, unDestino)
+		
 		if (self.puedeViajar(unViaje)) {
 			self.comprarPasaje(unViaje.precioDeViaje())
 			self.hacerViaje(unViaje)

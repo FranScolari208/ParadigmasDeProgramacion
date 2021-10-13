@@ -26,10 +26,11 @@ object barrileteCosmico {
 	}
 	
 	method armarViaje(unUsuario, unDestino){
-		const origenUsuario = unUsuario.localidadDeOrigen()
-		const transporte = mediosDeTransporte.anyOne()
-		const unViaje = new Viaje(origen = origenUsuario, destino = unDestino, medioDeTransporte = transporte)		
-		unUsuario.viajar(unViaje)
+		var origenUsuario = unUsuario.localidadDeOrigen()
+		var transporte = mediosDeTransporte.anyOne()
+		var unViaje = new Viaje(origen = origenUsuario, destino = unDestino, medioDeTransporte = transporte)
+				
+		return unViaje
 	}
 
 }
