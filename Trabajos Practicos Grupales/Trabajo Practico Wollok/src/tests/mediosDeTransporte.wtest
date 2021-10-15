@@ -1,4 +1,4 @@
-import mediosDeTransporte.*
+import main.mediosDeTransporte.*
 describe "Test de avion"{
 	test "El precio del avion al hacer 500KM"{
 		assert.equals(50000, avion.precioDeTransporte(500))

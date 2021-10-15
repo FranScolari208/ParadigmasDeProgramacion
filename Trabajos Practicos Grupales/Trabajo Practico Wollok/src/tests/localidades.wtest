@@ -1,5 +1,4 @@
-import destinos.*
-import localidades.*
+import main.localidades.*
 
 describe "Tests de last Toninas" {
 
@@ -12,7 +11,7 @@ describe "Tests de last Toninas" {
 	}
 
 	test "Se agrego el certificado de descuento despues de aplicarle un 25% de descuento a Last Toninas" {
-		var equipajeImprescindible = lastToninas.equipajeImprescindible()
+		const equipajeImprescindible = lastToninas.equipajeImprescindible()
 		assert.that(equipajeImprescindible.contains("Certificado de descuento"))
 	}
 	
@@ -20,7 +19,7 @@ describe "Tests de last Toninas" {
 		assert.equals(150, lastToninas.calcularDistancia(goodAirs))
 	}
 	
-	test "La distancia entre Good Airs Y Last Toninas son 150KM"{
+	test "La distancia entre Good Airs y Last Toninas son 150KM"{
 		assert.equals(150, goodAirs.calcularDistancia(lastToninas))
 	}
 

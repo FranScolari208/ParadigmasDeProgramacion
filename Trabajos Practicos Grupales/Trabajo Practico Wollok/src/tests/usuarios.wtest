@@ -1,11 +1,11 @@
-import usuarios.*
-import destinos.*
-import viajes.*
+import main.usuarios.*
+import main.localidades.*
+import main.viajes.*
 
-describe "Tests de PHari" {	
+describe "Tests de PHari" {
 
-	test "Ve que PHari pueda hacer un viaje a Garlic's Sea" {
-		assert.that(pHari.puedeViajar(viajeAGarlicSea))
+	test "Ver que Pablo pueda viajar a Garlic's Sea" {
+		assert.that(pHari.puedeViajar(viajeAGarlic))
 	}
 	
 	test "Ver que Pablo se siga a si mismo"{
@@ -14,21 +14,21 @@ describe "Tests de PHari" {
 	}
 }
 
-describe "Test de PHari y su viaje a Garlic Sea"{
-	method initialize() {
-		pHari.viajar(viajeAGarlicSea)
+describe "Test de Pablo Hari y su viaje a Garlic's Sea"{
+	method initialize(){
+		pHari.viajarA(garlicsSea)
 	}
 	
-	test "PHari tiene 100 kilometros" {
+	test "Pablo ahora tiene 100KM recorridos"{
 		assert.equals(100, pHari.kilometros())
 	}
-
-	test "Pablo se queda sin plata luego de viajar a Garlic's Sea" {
+	
+	test "Pablo que queda sin plata luego de viajar a Garlic's Sea"{
 		assert.equals(0, pHari.dinero())
 	}
 	
 	test "Ver que el viaje a garlicSea este en la lista de viajes de pablo"{
-		assert.that(pHari.viajes().contains(viajeAGarlicSea))
+		assert.notThat(pHari.viajes().isEmpty())
 	}
 	
 	test "Ver que luego de viajar a Garlic Sea Pablo la tenga como localidad de origen"{

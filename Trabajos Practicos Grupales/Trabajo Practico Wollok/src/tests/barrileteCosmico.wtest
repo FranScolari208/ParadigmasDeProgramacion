@@ -1,10 +1,9 @@
-import destinos.*
-import barrileteCosmico.*
-import usuarios.*
+import main.localidades.*
+import main.barrileteCosmico.*
 
 describe "Destinos importantes" {
 	test "Los destinos mas importantes de barrilete cosmico son Garlic´s Sea, Last Toninas" {
-		assert.equals([ lastToninas, garlicsSea ], barrileteCosmico.obtenerDestinosMasImportantes())
+		assert.equals([lastToninas, garlicsSea], barrileteCosmico.obtenerDestinosMasImportantes())
 	}
 }
 
@@ -63,4 +62,3 @@ describe "Carta de destinos de Barrilete cosmico" {
 		assert.that(barrileteCosmico.cartaDeDestinos().contains("Good Airs"))
 	}
 }
-

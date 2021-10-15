@@ -1,9 +1,8 @@
-import destinos.*
+import localidades.*
 import mediosDeTransporte.*
 import viajes.*
 
 object barrileteCosmico {
-
 	var destinos = [lastToninas, garlicsSea, goodAirs, silversSea]
 	var mediosDeTransporte = [avion, tren]
 
@@ -28,9 +27,8 @@ object barrileteCosmico {
 	method armarViaje(unUsuario, unDestino){
 		var origenUsuario = unUsuario.localidadDeOrigen()
 		var transporte = mediosDeTransporte.anyOne()
-		var unViaje = new Viaje(origen = origenUsuario, destino = unDestino, medioDeTransporte = transporte)
-				
-		return unViaje
+		const unViaje = new Viaje(origen = origenUsuario, destino = unDestino, medioDeTransporte = transporte)
+		return unViaje	
 	}
 
 }
