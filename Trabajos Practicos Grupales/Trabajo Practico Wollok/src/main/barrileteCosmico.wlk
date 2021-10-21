@@ -7,6 +7,8 @@ object barrileteCosmico {
 	var mediosDeTransporte = [avion, tren]
 
 	method destinos() = destinos
+	
+	method mediosDeTransporte() = mediosDeTransporte
 
 	method obtenerDestinosMasImportantes() {
 		return destinos.filter({ unDestino => unDestino.esDestacado() })
@@ -26,7 +28,7 @@ object barrileteCosmico {
 	
 	method armarViaje(unUsuario, unDestino){
 		var origenUsuario = unUsuario.localidadDeOrigen()
-		var transporte = mediosDeTransporte.anyOne()
+		var transporte = unUsuario.seleccionarTransporte(mediosDeTransporte)
 		const unViaje = new Viaje(origen = origenUsuario, destino = unDestino, medioDeTransporte = transporte)
 		return unViaje	
 	}
