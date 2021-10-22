@@ -31,8 +31,8 @@ class Usuario{
 		}
 	}
 	
-	method seleccionarTransporte(unosTransportes){
-		return tipoDeUsuario.elegirTransporte(unosTransportes)
+	method seleccionarTransporte(){
+		return tipoDeUsuario.elegirTransporte(self)
 	}
 
 	method kilometros() {
@@ -65,5 +65,5 @@ class Usuario{
 	}
 }
 
-const pHari = new Usuario(nombre = "Pablo Hari", localidadDeOrigen = goodAirs, viajes = [], dinero = 12500, tipoDeUsuario = empresarial, usuariosQueSigue = [])
+const pHari = new Usuario(nombre = "Pablo Hari", localidadDeOrigen = goodAirs, viajes = [], dinero = 14500, tipoDeUsuario = familiar, usuariosQueSigue = [])
 

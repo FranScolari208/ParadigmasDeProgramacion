@@ -6,6 +6,7 @@ class Viaje{
 	var destino
 	var medioDeTransporte
 	
+	method origen() = origen
 	method destino() = destino
 	
 	method distanciaRecorrida(){
@@ -18,4 +19,4 @@ class Viaje{
 	}
 }
 
-const viajeAGarlic = new Viaje(origen=goodAirs, destino = garlicsSea, medioDeTransporte = avion)
+const viajeAGarlic = new Viaje(origen=goodAirs, destino = garlicsSea, medioDeTransporte = avion500)

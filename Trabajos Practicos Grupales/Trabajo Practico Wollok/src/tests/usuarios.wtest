@@ -15,8 +15,11 @@ describe "Tests de PHari" {
 }
 
 describe "Test de Pablo Hari y su viaje a Garlic's Sea"{
+	
 	method initialize(){
-		pHari.viajarA(garlicsSea)
+		pHari.comprarPasaje(viajeAGarlic)
+		pHari.hacerViaje(viajeAGarlic)
+		pHari.setLocalidadDeOrigen(viajeAGarlic.destino())
 	}
 	
 	test "Pablo ahora tiene 100KM recorridos"{
@@ -27,8 +30,14 @@ describe "Test de Pablo Hari y su viaje a Garlic's Sea"{
 		assert.equals(0, pHari.dinero())
 	}
 	
-	test "Ver que el viaje a garlicSea este en la lista de viajes de pablo"{
-		assert.notThat(pHari.viajes().isEmpty())
+	test "Ver que el viaje a garlicSea este en la lista de viajes de pablo chequeando el origen del viaje"{
+		const localidadOrigen = pHari.viajes().get(0).origen()
+		assert.equals(goodAirs, localidadOrigen)
+	}
+	
+	test "Ver que el viaje a garlicSea este en la lista de viajes de pablo chequeando el destino del viaje"{
+		const localidadDestino = pHari.viajes().get(0).destino()
+		assert.equals(garlicsSea, localidadDestino)
 	}
 	
 	test "Ver que luego de viajar a Garlic Sea Pablo la tenga como localidad de origen"{

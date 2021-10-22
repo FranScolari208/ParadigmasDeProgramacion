@@ -1,22 +1,24 @@
 //como elegir los transportes???
 //el del minimo precio
+import barrileteCosmico.*
 object empresarial{
 	
-	method elegirTransporte(unosTransportes){
-		
+	method elegirTransporte(unUsuario){
+		return barrileteCosmico.elegirTransporteEmpresarial()
 	}
 }
 
 object estudiantil{
 	
-	method elegirTransporte(unosTransportes){
-		return unosTransportes.min({unTransporte=>unTransporte.precioPorKilometro()})
+	method elegirTransporte(unUsuario){
+		return barrileteCosmico.elegirTransporteEstudiantil(unUsuario)
+		//return unosTransportes.min({unTransporte=>unTransporte.precioPorKilometro()})
 	}
 }
 
-object famliar{
+object familiar{
 	
-	method elegirTransporte(unosTransportes){
-		return unosTransportes.anyOne()
+	method elegirTransporte(unUsuario){
+		return barrileteCosmico.elegirTransporteFamiliar()
 	}
 }

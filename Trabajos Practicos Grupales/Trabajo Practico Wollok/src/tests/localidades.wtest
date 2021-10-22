@@ -1,11 +1,12 @@
 import main.localidades.*
+import main.tipoDeLocalidades.*
 
 describe "Tests de last Toninas" {
 
 	method initialize() {
 		lastToninas.aplicarDescuento(25)
 	}
-
+	
 	test "El precio es 2625 despues de aplicarle un 25% de descuento a Last Toninas" {
 		assert.equals(2625, lastToninas.precio())
 	}
@@ -22,7 +23,6 @@ describe "Tests de last Toninas" {
 	test "La distancia entre Good Airs y Last Toninas son 150KM"{
 		assert.equals(150, goodAirs.calcularDistancia(lastToninas))
 	}
-
 }
 
 describe "Tests de Silver's Sea" {
@@ -30,5 +30,39 @@ describe "Tests de Silver's Sea" {
 	test "Silver's Sea no es un destino peligroso" {
 		assert.notThat(silversSea.esPeligroso())
 	}
+}
 
+describe "Test de tipos de localidades"{
+	
+	test "Last Toninas al ser una playa y valer mas de $2000 es localidad destacada"{
+		assert.that(lastToninas.esDestacado())
+	}
+	
+	test "Last Toninas al ser una playa nunca es peligrosa"{
+		assert.notThat(lastToninas.esPeligroso())
+	}
+	
+	test "Good Airs al ser una una Ciudad Historica y tener 2 museos no es localidad destacada"{
+		assert.notThat(goodAirs.esDestacado())
+	}
+	
+	test "Good Airs al ser una una Ciudad Historica y tener el seguro de viajero en su equipaje no es peligrosa"{
+		assert.notThat(goodAirs.esPeligroso())
+	}
+	
+	test "Garlic Sea al ser una montaña es siempre destacada"{
+		assert.that(garlicsSea.esDestacado())
+	}
+	
+	test "Garlic Sea al ser una una Montaña y tener mas de 5000 metros y tener una vacuna es una localidad peligrosa"{
+		assert.that(garlicsSea.esPeligroso())
+	}
+	
+	test "Silver Sea al ser una montaña es siempre destacada"{
+		assert.that(silversSea.esDestacado())
+	}
+	
+	test "Silver Sea al ser una una Montaña y tener menos de 5000 metros no es una localidad peligrosa"{
+		assert.notThat(silversSea.esPeligroso())
+	}
 }

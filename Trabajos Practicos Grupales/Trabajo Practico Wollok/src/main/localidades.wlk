@@ -56,7 +56,7 @@ class Localidad {
 
 }	
 
-const garlicsSea = new Localidad(nombre = "Garlic's Sea", equipajeImprescindible = ["Caña de Pescar", "Piloto"], precio = 2500, kilometroDeUbicacion = 100, tipoDeLocalidad = aconcagua)
+const garlicsSea = new Localidad(nombre = "Garlic's Sea", equipajeImprescindible = ["Caña de Pescar", "Piloto", "Vacuna Z"], precio = 2500, kilometroDeUbicacion = 100, tipoDeLocalidad = aconcagua)
 
 const silversSea = new Localidad(nombre = "Silver's Sea", equipajeImprescindible = ["Protector solar", "Equipo de buceo"], precio = 1350, kilometroDeUbicacion = 350, tipoDeLocalidad = everest)
 

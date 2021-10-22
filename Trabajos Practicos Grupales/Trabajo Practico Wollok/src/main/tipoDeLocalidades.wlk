@@ -3,17 +3,16 @@ class TipoDeLocalidad{
 	var nombre
 	
 	method esPeligroso(unaLocalidad)
-	method esDestacado(unaLocalidad)
+	
+	method esDestacado(unaLocalidad){
+		return unaLocalidad.esLocalidadDestacada()
+	}
 }
 
 class Playa inherits TipoDeLocalidad{
 	
 	override method esPeligroso(unaLocalidad){
 		return false
-	}
-	
-	override method esDestacado(unaLocalidad){
-		//tiene que retornar algo??
 	}
 }
 
@@ -26,7 +25,7 @@ class Montania inherits TipoDeLocalidad{
 	
 	override method esDestacado(unaLocalidad){
 		return true
-	}
+	}	
 }
 
 class CiudadHistorica inherits TipoDeLocalidad{
@@ -44,4 +43,4 @@ class CiudadHistorica inherits TipoDeLocalidad{
 const playaSoleada = new Playa(nombre="Playa Soleada")
 const aconcagua = new Montania(nombre= "Aconcagua", altura=6000)
 const everest = new Montania(nombre="Everest", altura=3000)
-const buenosAires = new CiudadHistorica(nombre="Buenos Aires", cantidadMuseos=4)
+const buenosAires = new CiudadHistorica(nombre="Buenos Aires", cantidadMuseos=2)

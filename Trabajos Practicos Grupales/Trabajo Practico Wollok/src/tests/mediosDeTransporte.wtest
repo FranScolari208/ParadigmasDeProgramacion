@@ -1,12 +1,44 @@
 import main.mediosDeTransporte.*
 describe "Test de avion"{
+	
+	test "El costo por kilometro del Avion500 es el indicado"{
+		assert.equals(120, avion500.costoPorKilometro())
+	}
+	
 	test "El precio del avion al hacer 500KM"{
-		assert.equals(50000, avion.precioDeTransporte(500))
+		assert.equals(60000, avion500.precioDeTransporte(500))
 	}
 }
 
 describe "Test de tren"{
-	test "El precio del tren al hacer 300KM"{
-		assert.equals(15000, tren.precioDeTransporte(300))
+	
+	test "El costo por kilometro del Tren Roca es el indicado"{
+		assert.equals(1380, trenRoca.costoPorKilometro())
 	}
+	
+	test "El precio del Tren Roca al hacer 300KM"{
+		assert.equals(414000, trenRoca.precioDeTransporte(300))
+	}	
+}
+
+describe "Test del Micro"{
+	
+	test "El costo por kilometro del Plusmar es el indicado"{
+		assert.equals(5000, plusmar.costoPorKilometro())
+	}
+	
+	test "El precio del Plusmar al hacer 100KM"{
+		assert.equals(500000, plusmar.precioDeTransporte(100))
+	}	
+}
+
+describe "Test del Barco"{
+	
+	test "El costo por kilometro del Titanic es el indicado"{
+		assert.equals(8000, titanic.costoPorKilometro())
+	}
+	
+	test "El precio del Titanic al hacer 100KM"{
+		assert.equals(800000, titanic.precioDeTransporte(100))
+	}	
 }
