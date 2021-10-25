@@ -7,6 +7,6 @@ describe "Tests de viaje a Garlic Sea"{
 	}
 	
 	test "Ver precio del viaje a Garlic Sea"{
-		assert.equals(14500, viajeAGarlic.precioDeViaje())
+		assert.equals(802500, viajeAGarlic.precioDeViaje())
 	}
 }

@@ -1,5 +1,5 @@
 import main.localidades.*
-import main.tipoDeLocalidades.*
+import main.tiposDeLocalidades.*
 
 describe "Tests de last Toninas" {
 
@@ -34,35 +34,44 @@ describe "Tests de Silver's Sea" {
 
 describe "Test de tipos de localidades"{
 	
-	test "Last Toninas al ser una playa y valer mas de $2000 es localidad destacada"{
-		assert.that(lastToninas.esDestacado())
+	test "Miami al ser una playa y valer mas de $2000 es localidad destacada"{
+		assert.that(miami.esDestacado())
 	}
 	
-	test "Last Toninas al ser una playa nunca es peligrosa"{
-		assert.notThat(lastToninas.esPeligroso())
+	test "Cancun al ser una playa y valer menos de $2000 no es localidad destacada"{
+		assert.notThat(cancun.esDestacado())
 	}
 	
-	test "Good Airs al ser una una Ciudad Historica y tener 2 museos no es localidad destacada"{
-		assert.notThat(goodAirs.esDestacado())
+	test "Miami al ser una playa nunca es peligrosa"{
+		assert.notThat(miami.esPeligroso())
 	}
 	
-	test "Good Airs al ser una una Ciudad Historica y tener el seguro de viajero en su equipaje no es peligrosa"{
-		assert.notThat(goodAirs.esPeligroso())
+	test "Buenos Aires al ser una una Ciudad Historica y tener 4 museos es localidad destacada"{
+		assert.that(buenosAires.esDestacado())
 	}
 	
-	test "Garlic Sea al ser una montaña es siempre destacada"{
-		assert.that(garlicsSea.esDestacado())
+	test "Cordoba capital al ser una una Ciudad Historica y tener 1 museo no es localidad destacada"{
+		assert.notThat(cordobaCapital.esDestacado())
 	}
 	
-	test "Garlic Sea al ser una una Montaña y tener mas de 5000 metros y tener una vacuna es una localidad peligrosa"{
-		assert.that(garlicsSea.esPeligroso())
+	test "Buenos Aires al ser una una Ciudad Historica y tener el seguro de asistencia en su equipaje no es peligrosa"{
+		assert.notThat(buenosAires.esPeligroso())
 	}
 	
-	test "Silver Sea al ser una montaña es siempre destacada"{
-		assert.that(silversSea.esDestacado())
+	test "Cordoba capital al ser una una Ciudad Historica y no tener el seguro de asistencia en su equipaje es peligrosa"{
+		assert.that(cordobaCapital.esPeligroso())
 	}
 	
-	test "Silver Sea al ser una una Montaña y tener menos de 5000 metros no es una localidad peligrosa"{
-		assert.notThat(silversSea.esPeligroso())
+	test "Everest al ser una montaña es siempre destacada"{
+		assert.that(everest.esDestacado())
+	}
+	
+	test "Everest al ser una una Montaña, tener mas de 5000 metros y tener una vacuna es una localidad peligrosa"{
+		assert.that(everest.esPeligroso())
+	}
+
+	
+	test "El Aconcagua al ser una una Montaña y tener menos de 5000 metros no es una localidad peligrosa"{
+		assert.notThat(aconcagua.esPeligroso())
 	}
 }

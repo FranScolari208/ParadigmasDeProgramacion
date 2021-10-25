@@ -25,6 +25,23 @@ class Localidad {
     calcularDistancia(otraLocalidad)
 }
 
+class Playa extends Localidad{
+
+    esPeligroso()
+}
+
+class Montania extends Localidad{
+    altura
+    esPeligroso()
+    esDestacado()
+}
+
+class CiudadHistorica extends Localidad{
+    cantidadDeMuseos
+    esPeligroso()
+    esDestacado()
+}
+
 class Usuario{
     nombre
     localidadDeOrigen
@@ -41,6 +58,19 @@ class Usuario{
     hacerViaje(unViaje)
 
 }
+
+class Empresarial extends Usuario{
+
+}
+
+class Familiar extends Usuario{
+
+}
+
+class Estudiantil extends Usuario{
+
+}
+
 class Viaje{
     origen
     destino
@@ -53,14 +83,27 @@ class Transporte{
     precioPorKilometro
     precioDeTransporte(unosKilometros)
 }
-object avion{
-    tiempoDeViaje = 60
-    precioPorKilometro = 100
+
+class Avion extends Transporte{
+    impulsoDeTurbinas
+
+    costoDeTransporte()
 }
-object tren{
-    tiempoDeViaje = 120
-    precioPorKilometro = 50
+
+class Micro extends Transporte{
+    costoDeTransporte()
 }
+
+class Barco extends Transporte{
+    probabilidadDeChocar
+    costoDeTransporte()
+}
+
+class Tren extends Transporte{
+    costoDeTransporte()
+}
+
+
 object lastToninas{
     nombre = "Last Toninas"
     equipajeImprecindible =  ["vacuna gripal", "vacuna B", "necronomicon"]
@@ -102,8 +145,6 @@ goodAirs    --|> Localidad
 silverSea   --|> Localidad
 garlicSea   --|> Localidad
 pHari   --|> Usuario
-tren --|> Transporte
-avion --|> Transporte
 
 Viaje ..> Transporte 
 Viaje ..> Localidad 

@@ -1,18 +1,18 @@
 import localidades.*
 import barrileteCosmico.*
 import viajes.*
-import tiposDeUsuario.*
 
 class Usuario{
-	var nombre
+	const nombre
 	var localidadDeOrigen
 	var viajes
 	var dinero
-	var tipoDeUsuario
 	var usuariosQueSigue
+	
+	method nombre() = nombre
 
 	method dinero() = dinero
-	
+		
 	method localidadDeOrigen() = localidadDeOrigen
 
 	method viajes() = viajes
@@ -30,13 +30,9 @@ class Usuario{
 			return "anda a laburar"
 		}
 	}
-	
-	method seleccionarTransporte(){
-		return tipoDeUsuario.elegirTransporte(self)
-	}
 
 	method kilometros() {
-		return viajes.sum({ unViaje => unViaje.distanciaRecorrida()})
+		return viajes.sum({ unViaje => unViaje.distanciaRecorrida() })
 	}
 
 	method seguirUsuario(unUsuario) {
@@ -65,5 +61,5 @@ class Usuario{
 	}
 }
 
-const pHari = new Usuario(nombre = "Pablo Hari", localidadDeOrigen = goodAirs, viajes = [], dinero = 14500, tipoDeUsuario = familiar, usuariosQueSigue = [])
+const pHari = new Usuario(nombre = "Pablo Hari", localidadDeOrigen = goodAirs, viajes = [], dinero = 802500, usuariosQueSigue = [])
 

@@ -1,16 +1,13 @@
-// costo por kilometro?? metodo a parte del precioDeTransporte? 
-//o el costoPorKilometro es el precioPorKilometro?
 class Transporte{
 	var tiempoDeViaje
-	var precioPorKilometro
+	
+	method tiempoDeViaje() = tiempoDeViaje
 	
 	method precioDeTransporte(unosKilometros){
-		var costo = self.costoPorKilometro()
-		return costo * unosKilometros
+		return self.costoPorKilometro() * unosKilometros
 	}
 	
 	method costoPorKilometro()
-	method tiempoDeViaje()= tiempoDeViaje
 }
 
 class Avion inherits Transporte{
@@ -22,16 +19,17 @@ class Avion inherits Transporte{
 }
 
 class Micro inherits Transporte{
+	
 	override method costoPorKilometro(){
 		return 5000
 	}
 }
 
 class Tren inherits Transporte{
+	
 	override method costoPorKilometro(){
 		return 2300*0.6 
-	}	// hacer kilometros*0,6 * 2300 es lo mismo que kilometros * 2300*0,6
-	
+	}
 }
 
 class Barco inherits Transporte{
@@ -42,7 +40,7 @@ class Barco inherits Transporte{
 	}
 }
 
-const avion500 = new Avion(tiempoDeViaje = 60, precioPorKilometro = 100, impulsoTurbinas = [20, 40, 60])
-const trenRoca = new Tren(tiempoDeViaje = 120, precioPorKilometro = 50)
-const plusmar = new Micro(tiempoDeViaje = 170, precioPorKilometro = 70)
-const titanic = new Barco(tiempoDeViaje = 300, precioPorKilometro = 10, probabilidadDeChocar = 8)
+const avion = new Avion(tiempoDeViaje = 60, impulsoTurbinas = [2000, 2000, 2000, 2000])
+const tren = new Tren(tiempoDeViaje = 120)
+const micro = new Micro(tiempoDeViaje = 150)
+const barco = new Barco(tiempoDeViaje = 300, probabilidadDeChocar = 1)

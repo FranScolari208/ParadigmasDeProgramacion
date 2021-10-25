@@ -1,6 +1,9 @@
 import main.usuarios.*
 import main.localidades.*
 import main.viajes.*
+import main.tiposDeUsuarios.*
+import main.tiposDeLocalidades.*
+import main.mediosDeTransporte.*
 
 describe "Tests de PHari" {
 
@@ -11,6 +14,63 @@ describe "Tests de PHari" {
 	test "Ver que Pablo se siga a si mismo"{
 		pHari.seguirUsuario(pHari)
 		assert.that(pHari.usuariosQueSigue().contains(pHari))
+	}
+}
+
+describe "Ver viaje de Santiago usuario Empresarial a Miami"{
+	
+	method initialize(){
+		santiago.viajarA(miami)
+	}
+	
+	test "Ver dinero de Santiago luego de pagar su viaje"{
+		assert.equals(597000,santiago.dinero())
+	}
+	
+	test "Ver que los kilometros recorridos sean los del viaje"{
+		assert.equals(300, santiago.kilometros())
+	}
+	
+	test "Ver que la nueva ciudad de origen de Santiago sea Miami"{
+		assert.equals(miami, santiago.localidadDeOrigen())
+	}
+	
+	test "Ver que Santiago haya seleccionado el transporte mas rapido"{
+		const viaje = santiago.viajes().get(0)
+		assert.equals(avion, viaje.medioDeTransporte())
+	}
+	
+	test "Ver que el viaje a Miami se haya agregado a la lista de viajes de Santiago"{
+		assert.notThat(santiago.viajes().isEmpty())
+	}
+
+}
+
+describe "Test de Franco usuario Estudiantil al Everest"{
+	method initialize(){
+		franco.viajarA(everest)
+	}
+	
+	test "Ver el dinero de Franco luego de pagar el viaje al Everest"{
+		assert.equals(90000,franco.dinero())
+	}
+	
+	test "Ver que los kilometros recorridos sean los del viaje"{
+		assert.equals(150, franco.kilometros())
+	}
+	
+	test "Ver que la nueva ciudad de origen de Franco sea el Everest"{
+		assert.equals(everest, franco.localidadDeOrigen())
+	}
+	
+	test "Ver que Franco haya seleccionado el transporte mas rapido dentro de lo que puede pagar"{
+		//puede pagar el tren y el barco pero el tren tarda menos
+		const viaje = franco.viajes().get(0)
+		assert.equals(tren, viaje.medioDeTransporte())
+	}
+	
+	test "Ver que el viaje al Everest se haya agregado a la lista de viajes de Franco"{
+		assert.notThat(franco.viajes().isEmpty())
 	}
 }
 

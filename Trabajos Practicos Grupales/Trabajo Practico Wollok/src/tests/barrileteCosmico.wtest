@@ -1,10 +1,11 @@
 import main.localidades.*
 import main.barrileteCosmico.*
 import main.mediosDeTransporte.*
+import main.tiposDeLocalidades.*
 
 describe "Destinos importantes" {
-	test "Los destinos mas importantes de barrilete cosmico son Garlic´s Sea, Last Toninas" {
-		assert.equals([lastToninas, garlicsSea, silversSea], barrileteCosmico.obtenerDestinosMasImportantes())
+	test "Los destinos mas importantes de barrilete cosmico" {
+		assert.equals([lastToninas, garlicsSea, miami, buenosAires, everest, aconcagua], barrileteCosmico.obtenerDestinosMasImportantes())
 	}
 }
 
@@ -40,7 +41,7 @@ describe "aplicar un descuento del 15% a todos los detinos de Barrilete Cosmico"
 
 describe "Destinos peligrosos" {
 	test "Last Toninas no es destino peligroso" {
-		assert.notThat(lastToninas.esPeligroso())
+		assert.that(lastToninas.esPeligroso())
 	}
 	
 	test "Good Airs no es destino peligroso" {
@@ -49,7 +50,7 @@ describe "Destinos peligrosos" {
 }
 
 describe "Barrilete cosmico es una empresa extrema" {
-	test "Los destinos mas peligrosos hasta el momento son Last Toninas" {
+	test "Barrilete cosmico es una empresa extrema por tener destinos peligrosos" {
 		assert.that(barrileteCosmico.esEmpresaExtrema())
 	}
 }
@@ -65,6 +66,6 @@ describe "Carta de destinos de Barrilete cosmico" {
 	
 	test"El transporte mas rapido del sistema es el avion"{
 		const mediosDeTransporte = barrileteCosmico.mediosDeTransporte()
-		assert.equals(avion500, barrileteCosmico.transporteMasRapido(mediosDeTransporte))
+		assert.equals(avion, barrileteCosmico.transporteMasRapido(mediosDeTransporte))
 	}
 }

@@ -6,17 +6,20 @@ class Viaje{
 	var destino
 	var medioDeTransporte
 	
-	method origen() = origen
 	method destino() = destino
+	
+	method origen() = origen
+	
+	method medioDeTransporte() = medioDeTransporte
 	
 	method distanciaRecorrida(){
 		return origen.calcularDistancia(destino)
 	}
 	
 	method precioDeViaje(){
-		var kilometros = self.distanciaRecorrida()
+		const kilometros = self.distanciaRecorrida()
 		return destino.precio() + medioDeTransporte.precioDeTransporte(kilometros)
 	}
 }
 
-const viajeAGarlic = new Viaje(origen=goodAirs, destino = garlicsSea, medioDeTransporte = avion500)
+const viajeAGarlic = new Viaje(origen=goodAirs, destino = garlicsSea, medioDeTransporte = avion)

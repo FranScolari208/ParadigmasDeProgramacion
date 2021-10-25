@@ -1,17 +1,18 @@
 import localidades.*
 import mediosDeTransporte.*
 import viajes.*
+import tiposDeLocalidades.*
 
 object barrileteCosmico {
-	var destinos = [lastToninas, garlicsSea, goodAirs, silversSea]
-	var mediosDeTransporte = [avion500, trenRoca, titanic, plusmar]
+	const destinos = [lastToninas, garlicsSea, goodAirs, silversSea, miami, buenosAires, cordobaCapital, cancun, everest, aconcagua]
+	const mediosDeTransporte = [avion, tren, micro, barco]
 
 	method destinos() = destinos
 	
 	method mediosDeTransporte() = mediosDeTransporte
 
 	method obtenerDestinosMasImportantes() {
-		return destinos.filter({ unDestino => unDestino.esDestacado()})
+		return destinos.filter({ unDestino => unDestino.esDestacado() })
 	}
 
 	method aplicarDescuentoALosDestinos(unDescuento) {
@@ -27,31 +28,28 @@ object barrileteCosmico {
 	}
 	
 	method armarViaje(unUsuario, unDestino){
-		var origenUsuario = unUsuario.localidadDeOrigen()
-		var transporte = unUsuario.seleccionarTransporte()
-		const unViaje = new Viaje(origen = origenUsuario, destino = unDestino, medioDeTransporte = transporte)
+		const origenUsuario = unUsuario.localidadDeOrigen()	
+		const kilometrosDeViaje = origenUsuario.calcularDistancia(unDestino)
+		const transporte = unUsuario.elegirTransporte(kilometrosDeViaje)
+		const unViaje = new Viaje(origen = origenUsuario, destino = unDestino, medioDeTransporte = transporte)	
 		return unViaje	
-	}
-	
-	method elegirTransporteFamiliar(){
-		return mediosDeTransporte.anyOne()
-	}
-	
-	method elegirTransporteEstudiantil(unUsuario){
-		var transportesPosibles = self.transportesPosiblesDeCostear(unUsuario)
-		return self.transporteMasRapido(transportesPosibles)
 	}
 	
 	method elegirTransporteEmpresarial(){
 		return self.transporteMasRapido(mediosDeTransporte)
 	}
-		
-	method transportesPosiblesDeCostear(unUsuario){
-		return mediosDeTransporte.filter({unTransporte=>unTransporte.costoPorKilometro() <= unUsuario.dinero()})
-	}
 	
 	method transporteMasRapido(unosTransportes){
 		return unosTransportes.min({unTransporte=>unTransporte.tiempoDeViaje()})
+	}
+	
+	method elegirTransporteEstudiantil(unUsuario, unosKilometros){
+		const posiblesDeCostear = mediosDeTransporte.filter({unTransporte => unTransporte.precioDeTransporte(unosKilometros) <= unUsuario.dinero()})
+		return self.transporteMasRapido(posiblesDeCostear)
+	}
+	
+	method elegirTransporteFamiliar(){
+		return mediosDeTransporte.anyOne()
 	}
 
 }
