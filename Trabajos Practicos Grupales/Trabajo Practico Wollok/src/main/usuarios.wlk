@@ -1,6 +1,8 @@
 import localidades.*
 import barrileteCosmico.*
 import viajes.*
+import tiposDeUsuarios.*
+import tiposDeLocalidades.*
 
 class Usuario{
 	const nombre
@@ -8,10 +10,13 @@ class Usuario{
 	var viajes
 	var dinero
 	var usuariosQueSigue
+	var tipoDeUsuario
 	
 	method nombre() = nombre
 
 	method dinero() = dinero
+	
+	method tipoDeUsuario() = tipoDeUsuario
 		
 	method localidadDeOrigen() = localidadDeOrigen
 
@@ -59,7 +64,16 @@ class Usuario{
 	method puedeViajar(unViaje) {
 		return unViaje.precioDeViaje() <= dinero
 	}
+	
+	method elegirTransporte(unosKilometros){
+		return tipoDeUsuario.elegirTransportePorTipo(self, unosKilometros)
+	}
+	
+	method cambiarTipoDeUsuario(unTipo){
+		tipoDeUsuario = unTipo
+	}
 }
 
-const pHari = new Usuario(nombre = "Pablo Hari", localidadDeOrigen = goodAirs, viajes = [], dinero = 802500, usuariosQueSigue = [])
-
+const pHari = new Usuario(nombre = "Pablo Hari", localidadDeOrigen = goodAirs, viajes = [], dinero = 802500, usuariosQueSigue = [], tipoDeUsuario = familiar)
+const franco = new Usuario(nombre = "Franco", localidadDeOrigen = buenosAires, viajes=[], dinero = 300000, usuariosQueSigue = [], tipoDeUsuario = estudiantil)
+const santiago = new Usuario(nombre = "Santiago", localidadDeOrigen = garlicsSea, viajes=[], dinero = 3000000, usuariosQueSigue = [], tipoDeUsuario = empresarial)

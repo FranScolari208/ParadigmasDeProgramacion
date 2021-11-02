@@ -1,4 +1,5 @@
 import localidades.*
+
 class Playa inherits Localidad{
 	
 	override method esPeligroso(){

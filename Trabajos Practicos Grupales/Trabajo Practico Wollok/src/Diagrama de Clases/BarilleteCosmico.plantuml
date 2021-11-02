@@ -1,15 +1,19 @@
 @startuml "Barrilete Cosmico"
 
 object barrileteCosmico{
-    destinos = [lastToninas, garlicsSea, goodAirs, silversSea]
-    usuarios = {pabloHari}
-    mediosDeTransporte = [avion,tren]
+    destinos = [lastToninas, garlicsSea, goodAirs, silversSea, miami, cancun, everest, aconcagua, buenosAires, cordobaCapital]
+    usuarios = {pabloHari, santiago, franco}
+    mediosDeTransporte = [avion,tren, barco, micro]
 
     obtenerDestinoMasImportantes()
     aplicarDescuentosALosDestinos()
     esEmpresaExtrema()
     cartaDeDestinos()
     armarViaje(unUsuario, unDestino)
+    elegirTransporteEmpresarial(unosKilometros)
+    elegirTransporteFamiliar()
+    elegirTransporteEstudiantil(unUsuario, unosKilometros)
+    transporteMasRapido(unosTransportes)
 }
 
 class Localidad {
@@ -18,28 +22,24 @@ class Localidad {
     kilometroDeUbicacion
     precio
     esDestacado()
+    esPeligroso()
     aplicarDescuento(unDescuento)
     reducirPrecio(unDescuento)
-    agregarEquipaje(equipaje)
-    esDestinoPeligroso()
+    agregarEquipaje(equipaje)  
     calcularDistancia(otraLocalidad)
 }
 
 class Playa extends Localidad{
 
-    esPeligroso()
 }
 
 class Montania extends Localidad{
     altura
-    esPeligroso()
-    esDestacado()
 }
 
 class CiudadHistorica extends Localidad{
     cantidadDeMuseos
-    esPeligroso()
-    esDestacado()
+
 }
 
 class Usuario{
@@ -48,6 +48,7 @@ class Usuario{
     dinero
     viajes
     usuariosQueSigue
+    tipoDeUsuario
     viajarA(destino)
     puedeViajar(destino)
     comprarPasaje(destino)
@@ -56,19 +57,24 @@ class Usuario{
     seguirUsuario(unUsuario)
     devolverFollow(unUsuario)
     hacerViaje(unViaje)
-
+    elegirTransporte(unosKilometros)
+    cambiarTipoDeUsuario(unTipoDeUsuario)
 }
 
-class Empresarial extends Usuario{
-
+object empresarial{
+    elegirTransportePorTipo(unUsuario, unosKilometros)
 }
 
-class Familiar extends Usuario{
-
+object familiar{
+    elegirTransportePorTipo(unUsuario, unosKilometros)
 }
 
-class Estudiantil extends Usuario{
+object estudiantil{
+    elegirTransportePorTipo(unUsuario, unosKilometros)
+}
 
+Interface TipoDeUsuario{
+    elegirTransportePorTipo(unUsuario, unosKilometros)
 }
 
 class Viaje{
@@ -78,29 +84,29 @@ class Viaje{
     distanciaRecorrida()
     precioDeViaje()
 }
-class Transporte{
+
+Abstract Transporte{
     tiempoDeViaje
-    precioPorKilometro
     precioDeTransporte(unosKilometros)
+    costoDeTransporte()
 }
 
 class Avion extends Transporte{
     impulsoDeTurbinas
 
-    costoDeTransporte()
 }
 
 class Micro extends Transporte{
-    costoDeTransporte()
+
 }
 
 class Barco extends Transporte{
     probabilidadDeChocar
-    costoDeTransporte()
+
 }
 
 class Tren extends Transporte{
-    costoDeTransporte()
+
 }
 
 
@@ -145,6 +151,12 @@ goodAirs    --|> Localidad
 silverSea   --|> Localidad
 garlicSea   --|> Localidad
 pHari   --|> Usuario
+
+estudiantil ..> TipoDeUsuario
+familiar ..> TipoDeUsuario
+empresarial..> TipoDeUsuario
+
+Usuario ..|> TipoDeUsuario
 
 Viaje ..> Transporte 
 Viaje ..> Localidad 

@@ -3,26 +3,23 @@ import usuarios.*
 import tiposDeLocalidades.*
 import localidades.*
 
-class Empresarial inherits Usuario{
+object empresarial{
 	
-	method elegirTransporte(unosKilometros){
+	method elegirTransportePorTipo(unUsuario, unosKilometros){
 		return barrileteCosmico.elegirTransporteEmpresarial()
 	}
 }
 
-class Estudiantil inherits Usuario{
+object estudiantil{
 	
-	method elegirTransporte(unosKilometros){
-		return barrileteCosmico.elegirTransporteEstudiantil(self, unosKilometros)
+	method elegirTransportePorTipo(unUsuario, unosKilometros){
+		return barrileteCosmico.elegirTransporteEstudiantil(unUsuario, unosKilometros)
 	}
 }
 
-class Familiar inherits Usuario{
+object familiar{
 	
-	method elegirTransporte(unosKilometros){
+	method elegirTransportePorTipo(unUsuario, unosKilometros){
 		return barrileteCosmico.elegirTransporteFamiliar()
 	}
 }
-
-const franco = new Estudiantil(nombre = "Franco", localidadDeOrigen = buenosAires, viajes=[], dinero = 300000, usuariosQueSigue = [])
-const santiago = new Empresarial(nombre = "Santiago", localidadDeOrigen = garlicsSea, viajes=[], dinero = 3000000, usuariosQueSigue = [])

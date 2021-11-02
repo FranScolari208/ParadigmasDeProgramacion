@@ -43,10 +43,16 @@ describe "Ver viaje de Santiago usuario Empresarial a Miami"{
 	test "Ver que el viaje a Miami se haya agregado a la lista de viajes de Santiago"{
 		assert.notThat(santiago.viajes().isEmpty())
 	}
+	
+	test "Ver si santiago se puede cambiar de usuario a familiar"{
+		santiago.cambiarTipoDeUsuario(familiar)
+		assert.equals(familiar, santiago.tipoDeUsuario())
+	}
 
 }
 
 describe "Test de Franco usuario Estudiantil al Everest"{
+	
 	method initialize(){
 		franco.viajarA(everest)
 	}
@@ -71,6 +77,11 @@ describe "Test de Franco usuario Estudiantil al Everest"{
 	
 	test "Ver que el viaje al Everest se haya agregado a la lista de viajes de Franco"{
 		assert.notThat(franco.viajes().isEmpty())
+	}
+	
+	test "Ver si franco se puede cambiar de usuario a empresarial"{
+		franco.cambiarTipoDeUsuario(empresarial)
+		assert.equals(empresarial, franco.tipoDeUsuario())
 	}
 }
 

@@ -41,6 +41,7 @@ object barrileteCosmico {
 	
 	method transporteMasRapido(unosTransportes){
 		return unosTransportes.min({unTransporte=>unTransporte.tiempoDeViaje()})
+		// medir transporte mas veloz por una variable velocidad o esta bien el tiempo?
 	}
 	
 	method elegirTransporteEstudiantil(unUsuario, unosKilometros){
